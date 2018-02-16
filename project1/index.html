@@ -22,6 +22,8 @@
 				 <a-asset-item id="kitchen_sink" src="assets/kitchen_sink/model.dae"></a-asset-item>
 				 <a-asset-item id="dining_set" src="assets/WE+_+Tilt+_+Dining+Set+_+2+Chairs+2+Benches/model.dae"></a-asset-item>
 				 <a-asset-item id="TV" src="assets/tvstand_1a/model.dae"></a-asset-item>
+				 <a-asset-item id="desk" src="assets/Desk/model.dae"></a-asset-item>
+				 <a-asset-item id="small_table" src="assets/small_table/scene.gltf"></a-asset-item>
 			</a-assets>
 			<!--
 			<a-entity collada-model="#sofa" rotation="0 0 0" position="0 0 0" ></a-entity>
@@ -44,13 +46,13 @@
 				<!--light-->
 				<a-entity position="0 2.203 0" light="type: point; intensity: 3; distance: 3" id="ceiling_light" ></a-entity>
 				<a-entity position="-1.21 0.839 0.303" light="type: point; distance: 1" id="lamp_light" color="#ff972f" groundColor="#ff8000"></a-entity>
-				<a-entity geometry="primitive:sphere;radius:30" material="side:back;color:#620000;emissive:#2c2c2c" id="sky"></a-entity>
 				<!--models-->
 				<a-gltf-model src="#bed" position="-0.711 0 1.022" rotation="0 90.01166961505233 0" scale="0.367 0.338 0.244" gltf-model="#bed" id="bed"></a-gltf-model>
 				<a-gltf-model src="#lamp_post" position="-1.25 0.398 0.291" rotation="0 90.01166961505233 0" scale="0.005 0.005 0.005" gltf-model="#lamp_post" id="lamp_post"></a-gltf-model>
 				<a-gltf-model src="#ceiling_light" position="0 2.49 0" rotation="0 90.01166961505233 0" scale="0.005 0.005 0.005" gltf-model="#ceiling_light" id="ceiling_light"></a-gltf-model>
 				<a-gltf-model src="#dresser" position="-1.47 0.058 0.078" rotation="0 0 0" scale="0.01 0.009 0.008" gltf-model="#dresser" id="dresser"></a-gltf-model>
 				<a-gltf-model src="#bookshelf" position="-1.35 0.053 -1" rotation="0 90 0" scale="0.008 0.006 0.005" gltf-model="#bookshelf" id="bookshelf"></a-gltf-model>
+				<a-entity collada-model="#desk" position="-0.779 0 -0.546" id="desk" scale="0.75 0.75 0.75"></a-entity>
 			</a-entity>
 
 			<!--living room-->
@@ -69,7 +71,7 @@
 				</a-entity>
 				<!--models-->
 				<a-entity collada-model="#ceiling_light2" rotation="0 0 0" position="2.936 2.442 -.45" id="ceiling_light"></a-entity>
-				<a-entity collada-model="#sofa" rotation="0 180 0" scale=".5 .5 .5" position="4.324 0 -.05" id="sofa"></a-entity>
+				<a-entity collada-model="assets/sofa/model.dae" rotation="0 180 0" scale="1 0.75 0.5" position="3.872 0.089 1.046" id="sofa"></a-entity>
 				<a-gltf-model src="#kitchen_light" position="2.397 2.161 3.48" rotation="0 90.01166961505233 90" scale="0.005 0.003 0.005" gltf-model="#ceiling_light" id="kitchen_light"></a-gltf-model>
 				<a-gltf-model src="#kitchen_light" position="4.797 2.161 3.48" rotation="0 90.01166961505233 90" scale="0.005 0.003 0.005" gltf-model="#ceiling_light" id="table_light"></a-gltf-model>
 				<a-entity collada-model="#kitchen_counter" rotation="0 90 0" scale="0.5 0.7 0.5" position="3.174 0.087 3.444" id="kitchen_counter"></a-entity>
@@ -93,6 +95,8 @@
 				<a-entity collada-model="#kitchen_sink" rotation="0 0 0" scale="0.5 0.6 0.5" position="2.973 0.087 2.263" id="kitchen_sink"></a-entity>
 				<a-entity collada-model="#dining_set" rotation="0 0 0" scale="0.5 0.6 0.5" position="4.789 0.087 3.302" id="dining_set"></a-entity>
 				<a-entity collada-model="#TV" rotation="0 0 0" scale="1 1.2 0.5" position="2.388 0.087 -1.4" id="TV"></a-entity>
+				<a-gltf-model src="#small_table" position="3.154 0.121 0.76" rotation="0 90.01166961505233 0" scale="0.25 0.25 0.25" gltf-model="#small_table" id="small_table"></a-gltf-model>
+
 				<!--light-->
 				<a-entity position="3.444 2.821 -.34" light="type: point; intensity: 5; distance: 5" id="ceiling_light" ></a-entity>
 				<a-entity position="2.391 2.164 3.298" light="type: point; intensity: 3; distance: 3" id="kitchen_light" ></a-entity>
@@ -100,11 +104,18 @@
 
 			</a-entity>
 			
-			<!--ambient light and camera-->
+			<!--ambient light, camera, sky-->
+			<a-entity geometry="primitive:sphere;radius:30" material="side:back;color:#620000;emissive:#2c2c2c" id="sky"></a-entity>
 			<a-entity light="color:#6d6d6d;groundColor:#292929;type:ambient" id="ambient_light"></a-entity>
 			<a-entity position="5.582 -.5 -0.59" rotation="0 90 0" id="camera">
   				 <a-camera 
-  				 	fov ="50">
+  				 	fov ="50" universal-controls>
+  				 	
+  				 	
+  				 	<a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
+                    radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75">
+                    </a-entity>
+                
   				 </a-camera>
 			</a-entity>
 
