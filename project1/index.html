@@ -46,15 +46,15 @@
 				<script>
 				function setBedDoorPosition(){
 					var my_door = document.querySelector('#bedroom_door');
-					if(isClosed){
-						my_door.setAttribute('position', bed_door_opened_position[0]);
-						my_door.setAttribute('rotation', bed_door_opened_rotation[1]);
+					if(bed_isClosed){
+						my_door.setAttribute('position', bed_door_opened_position);
+						my_door.setAttribute('rotation', bed_door_opened_rotation);
 						bed_isOpened = true;
 						bed_isClosed = false;
 					}
-					else if(isOpened){
-						my_door.setAttribute('position', bed_door_closed_position[0]);
-						my_door.setAttribute('rotation', bed_door_closed_rotation[1]);
+					else if(bed_isOpened){
+						my_door.setAttribute('position', bed_door_closed_position);
+						my_door.setAttribute('rotation', bed_door_closed_rotation);
 						bed_isOpened = false;
 						bed_isClosed = true;
 					}
