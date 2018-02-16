@@ -1,0 +1,117 @@
+<html>
+<head>
+		<script src="libs/aframe.min.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+</head>
+
+	
+	<body>
+		<a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" stats>
+			
+
+			<a-assets>
+				 <a-asset-item id="bed" src="assets/bed2/scene.gltf"></a-asset-item>
+				 <a-asset-item id="lamp_post" src="assets/lamp/scene.gltf"></a-asset-item>
+				 <a-asset-item id="ceiling_light" src="assets/simple_ceiling_light/scene.gltf"></a-asset-item>
+				 <a-asset-item id="dresser" src="assets/dresser/scene.gltf"></a-asset-item>
+				 <a-asset-item id="bookshelf" src="assets/pirate_captains_antique_bookshelf/scene.gltf"></a-asset-item>
+				 <a-asset-item id="sofa" src="assets/sofa/model.dae"></a-asset-item>
+				 <a-asset-item id="ceiling_light2" src ="assets/STOCKHOLM+PENDANT+LAMP+-+IKEA/model.dae"></a-asset-item>
+				 <a-asset-item id="kitchen_counter" src="assets/Kitchen+Counter/model.dae"></a-asset-item>
+				 <a-asset-item id="kitchen_cabinet" src="assets/cabinet/model.dae"></a-asset-item>
+				 <a-asset-item id="kitchen_sink" src="assets/kitchen_sink/model.dae"></a-asset-item>
+				 <a-asset-item id="dining_set" src="assets/WE+_+Tilt+_+Dining+Set+_+2+Chairs+2+Benches/model.dae"></a-asset-item>
+				 <a-asset-item id="TV" src="assets/tvstand_1a/model.dae"></a-asset-item>
+			</a-assets>
+			<!--
+			<a-entity collada-model="#sofa" rotation="0 0 0" position="0 0 0" ></a-entity>
+			-->
+			<!--bed room-->
+			<a-entity scale="1 1 1" id="bed room">
+				<!-- bed room box-->
+				<a-entity scale="1 1 1" id="bed room box">
+					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" id="bedroom_wall-1">
+					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-2" geometry="">
+					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-3" geometry="">
+					</a-box><a-box position="1.446 0.806 -0.846" scale="0.75 1.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#585858;metalness:0.3" id="bedroom_door" geometry="" visible="false">
+					</a-box><a-box position="1.446 0.806 -1.556" scale="0.674 1.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-5" geometry="" visible="false">
+					</a-box><a-box position="1.446 1.978 -1.136" scale="1.35 0.851 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-6" geometry="" visible="false">
+					</a-box><a-box position="1.446 1.226 0.587" scale="2.13 2.504 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-4" geometry="" visible="false">
+					</a-box><a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="">
+					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="">
+					</a-box>
+				</a-entity>
+				<!--light-->
+				<a-entity position="0 2.203 0" light="type: point; intensity: 3; distance: 3" id="ceiling_light" ></a-entity>
+				<a-entity position="-1.21 0.839 0.303" light="type: point; distance: 1" id="lamp_light" color="#ff972f" groundColor="#ff8000"></a-entity>
+				<a-entity geometry="primitive:sphere;radius:30" material="side:back;color:#620000;emissive:#2c2c2c" id="sky"></a-entity>
+				<!--models-->
+				<a-gltf-model src="#bed" position="-0.711 0 1.022" rotation="0 90.01166961505233 0" scale="0.367 0.338 0.244" gltf-model="#bed" id="bed"></a-gltf-model>
+				<a-gltf-model src="#lamp_post" position="-1.25 0.398 0.291" rotation="0 90.01166961505233 0" scale="0.005 0.005 0.005" gltf-model="#lamp_post" id="lamp_post"></a-gltf-model>
+				<a-gltf-model src="#ceiling_light" position="0 2.49 0" rotation="0 90.01166961505233 0" scale="0.005 0.005 0.005" gltf-model="#ceiling_light" id="ceiling_light"></a-gltf-model>
+				<a-gltf-model src="#dresser" position="-1.47 0.058 0.078" rotation="0 0 0" scale="0.01 0.009 0.008" gltf-model="#dresser" id="dresser"></a-gltf-model>
+				<a-gltf-model src="#bookshelf" position="-1.35 0.053 -1" rotation="0 90 0" scale="0.008 0.006 0.005" gltf-model="#bookshelf" id="bookshelf"></a-gltf-model>
+			</a-entity>
+
+			<!--living room-->
+			<a-entity id="living room">
+				<!--living room box-->
+				<a-entity scale="1.5 1.5 1.5" id="living room box" position="3.748 0 .740" rotation="0 180 0">
+					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" id="bedroom_wall-1">
+					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-2" geometry="">
+					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-3" geometry="" visible="false">
+					</a-box><a-box position="1.446 2.067 -0.09" scale="3.597 .837 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-4" geometry="">
+					</a-box><a-box position="1.456 .815 -1.23" scale="1.148 1.704 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-5" geometry="">
+					</a-box><a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="">
+					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="">
+					</a-box>
+					<a-entity position=".521 0.359 -.73" rotation="0 90 0" scale="1.523 .613 1.8" geometry="width:0.1" material="color:#950b0b"></a-entity>
+				</a-entity>
+				<!--models-->
+				<a-entity collada-model="#ceiling_light2" rotation="0 0 0" position="2.936 2.442 -.45" id="ceiling_light"></a-entity>
+				<a-entity collada-model="#sofa" rotation="0 180 0" scale=".5 .5 .5" position="4.324 0 -.05" id="sofa"></a-entity>
+				<a-gltf-model src="#kitchen_light" position="2.397 2.161 3.48" rotation="0 90.01166961505233 90" scale="0.005 0.003 0.005" gltf-model="#ceiling_light" id="kitchen_light"></a-gltf-model>
+				<a-gltf-model src="#kitchen_light" position="4.797 2.161 3.48" rotation="0 90.01166961505233 90" scale="0.005 0.003 0.005" gltf-model="#ceiling_light" id="table_light"></a-gltf-model>
+				<a-entity collada-model="#kitchen_counter" rotation="0 90 0" scale="0.5 0.7 0.5" position="3.174 0.087 3.444" id="kitchen_counter"></a-entity>
+				<a-entity scale=".15 .2 .3" id="cabinet box" position="1.878 1.095 2.618">
+					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" id="cabinet_wall-1">
+					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" id="cabinet_wall-2" geometry="">
+					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="cabinet_wall-3" geometry="">
+					</a-box>
+					<a-box position="1.446 1.226 1.212" scale=".9 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="cabinet_door-1" geometry="" visible="true">
+					</a-box>
+					<a-box position="1.446 1.226 .303" scale=".9 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="cabinet_door-2" geometry="" visible="true">
+					</a-box>
+					<a-box position="1.446 1.226 -.6" scale=".9 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="cabinet_door-3" geometry="" visible="true">
+					</a-box>
+					<a-box position="1.446 1.226 -1.51" scale=".9 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="cabinet_door-4" geometry="" visible="true">
+					</a-box>
+					<a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="">
+					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="">
+					</a-box>
+				</a-entity>
+				<a-entity collada-model="#kitchen_sink" rotation="0 0 0" scale="0.5 0.6 0.5" position="2.973 0.087 2.263" id="kitchen_sink"></a-entity>
+				<a-entity collada-model="#dining_set" rotation="0 0 0" scale="0.5 0.6 0.5" position="4.789 0.087 3.302" id="dining_set"></a-entity>
+				<a-entity collada-model="#TV" rotation="0 0 0" scale="1 1.2 0.5" position="2.388 0.087 -1.4" id="TV"></a-entity>
+				<!--light-->
+				<a-entity position="3.444 2.821 -.34" light="type: point; intensity: 5; distance: 5" id="ceiling_light" ></a-entity>
+				<a-entity position="2.391 2.164 3.298" light="type: point; intensity: 3; distance: 3" id="kitchen_light" ></a-entity>
+				<a-entity position="4.797 2.164 3.298" light="type: point; intensity: 3; distance: 3" id="table_light" ></a-entity>
+
+			</a-entity>
+			
+			<!--ambient light and camera-->
+			<a-entity light="color:#6d6d6d;groundColor:#292929;type:ambient" id="ambient_light"></a-entity>
+			<a-entity position="5.582 -.5 -0.59" rotation="0 90 0" id="camera">
+  				 <a-camera 
+  				 	fov ="50">
+  				 </a-camera>
+			</a-entity>
+
+			
+
+		
+		
+	</a-scene>
+	</body>
+	</html>
