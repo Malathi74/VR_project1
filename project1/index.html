@@ -1,7 +1,8 @@
 <html>
 <head>
-		<script src="libs/aframe.min.js"></script>
-		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+		<script src="http://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+		<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.0.0/dist/aframe-physics-system.min.js"></script>
 
 		<!--global variables-->
 		<!--bed room door-->
@@ -18,7 +19,7 @@
 
 	
 	<body>
-		<a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" stats>
+		<a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" stats physics="debug: true">
 			
 
 			<a-assets>
@@ -44,6 +45,13 @@
 			<a-entity scale="1 1 1" id="bed room">
 				<!--dynamic events-->
 				<script>
+					var bed_door_opened_position = new Object({x: 1.446, y: .806, z: -.84});
+					var bed_door_opened_rotation = new Object({x: 0, y: 90, z: 0})
+					var bed_door_closed_position = new Object({x: 1.75, y: .806, z: -.5});
+					var bed_door_closed_rotation = new Object({x: 0, y: 180, z: 0})
+					var bed_isOpened = false;
+					var bed_isClosed = true;
+
 				function setBedDoorPosition(){
 					var my_door = document.querySelector('#bedroom_door');
 					if(bed_isClosed){
@@ -62,15 +70,17 @@
 				</script>
 				<!-- bed room box-->
 				<a-entity scale="1 1 1" id="bed room box">
-					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" id="bedroom_wall-1">
-					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-2" geometry="">
-					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-3" geometry="">
-					</a-box><a-box position="1.446 0.806 -0.846" scale="0.75 1.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#585858;metalness:0.3" id="bedroom_door" geometry="" visible="true" onclick="setBedDoorPosition()">
-					</a-box><a-box position="1.446 0.806 -1.556" scale="0.674 1.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-5" geometry="" visible="true">
-					</a-box><a-box position="1.446 1.978 -1.136" scale="1.35 0.851 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-6" geometry="" visible="true">
-					</a-box><a-box position="1.446 1.226 0.587" scale="2.13 2.504 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-4" geometry="" visible="true">
-					</a-box><a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="">
-					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="">
+					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" static-body id="bedroom_wall-1">
+					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" static-body id="bedroom_wall-2" geometry="">
+					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-3" geometry="" static-body>
+					</a-box>
+					<a-box position="1.446 0.806 -0.846" scale="0.75 1.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#585858;metalness:0.3" id="bedroom_door" geometry="" visible="true" onclick="setBedDoorPosition()" static-body="shape:auto" class="intersectable">
+					</a-box>
+					<a-box position="1.446 0.806 -1.556" scale="0.674 1.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-5" geometry="" visible="true" static-body>
+					</a-box><a-box position="1.446 1.978 -1.136" scale="1.35 0.851 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-6" geometry="" visible="true" static-body>
+					</a-box><a-box position="1.446 1.226 0.587" scale="2.13 2.504 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-4" geometry="" visible="true" static-body>
+					</a-box><a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="" static-body>
+					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="" static-body>
 					</a-box>
 				</a-entity>
 				<!--light-->
@@ -89,15 +99,15 @@
 			<a-entity id="living room">
 				<!--living room box-->
 				<a-entity scale="1.5 1.5 1.5" id="living room box" position="3.748 0 .740" rotation="0 180 0">
-					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" id="bedroom_wall-1">
-					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-2" geometry="">
-					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-3" geometry="" visible="false">
-					</a-box><a-box position="1.446 2.067 -0.09" scale="3.597 .837 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-4" geometry="">
-					</a-box><a-box position="1.456 .815 -1.23" scale="1.148 1.704 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-5" geometry="">
-					</a-box><a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="">
-					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="">
+					<a-box position="0 1.226 -1.85" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" geometry="" id="bedroom_wall-1" static-body>
+					</a-box><a-box position="0 1.226 1.702" scale="3 2.5 0.1" color="#f67474" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-2" geometry="" static-body>
+					</a-box><a-box position="-1.545 1.226 -0.07" scale="3.5 2.5 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-3" geometry="" visible="false" static-body>
+					</a-box><a-box position="1.446 2.067 -0.09" scale="3.597 .837 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-4" geometry="" static-body>
+					</a-box><a-box position="1.456 .815 -1.23" scale="1.148 1.704 0.1" color="#f67474" rotation="0 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="bedroom_wall-5" geometry="" static-body>
+					</a-box><a-box position="-0.003 2.439 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="ceiling" geometry="" static-body>
+					</a-box><a-box position="-0.003 0.011 -0.07" scale="3.5 3 0.1" color="#f67474" rotation="90 90 0" material="color:#950b0b;emissive:#000000;metalness:0.3" id="floor" geometry="" static-body>
 					</a-box>
-					<a-entity position=".521 0.359 -.73" rotation="0 90 0" scale="1.523 .613 1.8" geometry="width:0.1" material="color:#950b0b"></a-entity>
+					<a-entity position=".521 0.359 -.73" rotation="0 90 0" scale="1.523 .613 1.8" geometry="width:0.1" material="color:#950b0b" static-body></a-entity>
 				</a-entity>
 				<!--models-->
 				<a-entity collada-model="#ceiling_light2" rotation="0 0 0" position="2.936 2.442 -.45" id="ceiling_light"></a-entity>
@@ -139,7 +149,7 @@
 			<a-entity light="color:#6d6d6d;groundColor:#292929;type:ambient" id="ambient_light"></a-entity>
 			<a-entity position="5.582 -.5 -0.59" rotation="0 90 0" id="camera">
   				 <a-camera 
-  				 	fov ="50" universal-controls>
+  				 	fov ="50" universal-controls kinematic-body>
   				 	<!--
   				 	universal-controls-->
   				 	<a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
@@ -148,6 +158,8 @@
                 	
   				 </a-camera>
 			</a-entity>
+
+			<a-plane static-body position="0 0 0" rotation="-90 0 0" width="100" height="100" depth="1"></a-plane>
 
 			
 
