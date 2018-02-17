@@ -1,25 +1,17 @@
 <html>
 <head>
 		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-		<script src="http://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
-		<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.0.0/dist/aframe-physics-system.min.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
 
-		<!--global variables-->
-		<!--bed room door-->
-		<script 
-		var bed_door_opened_position = new Object({x: 1.446, y: .806, z: -.84});
-		var bed_door_opened_rotation = new Object({x: 0, y: 90, z: 0})
-		var bed_door_closed_position = new Object({x: 1.75, y: .806, z: -.5});
-		var bed_door_closed_rotation = new Object({x: 0, y: 180, z: 0})
-		var bed_isOpened = false;
-		var bed_isClosed = true;>
-		</script>
+		<!--<script src="http://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+		<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.0.0/dist/aframe-physics-system.min.js"></script>
+		-->
 
 </head>
 
 	
 	<body>
-		<a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" stats physics="debug: true">
+		<a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" stats >
 			
 
 			<a-assets>
@@ -147,17 +139,15 @@
 			<!--ambient light, camera, sky-->
 			<a-entity geometry="primitive:sphere;radius:30" material="side:back;color:#620000;emissive:#2c2c2c" id="sky"></a-entity>
 			<a-entity light="color:#6d6d6d;groundColor:#292929;type:ambient" id="ambient_light"></a-entity>
-			<a-entity position="5.582 -.5 -0.59" rotation="0 90 0" id="camera">
-  				 <a-camera 
-  				 	fov ="50" universal-controls kinematic-body>
-  				 	<!--
-  				 	universal-controls-->
-  				 	<a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
-                    radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75">
-                    </a-entity>
-                	
-  				 </a-camera>
+
+			<a-entity position="5.582 1 -0.59" rotation="0 90 0" id="camera" universal-controls camera="fov: 50">
+				
+  				 <a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
+                 radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75">
+                 </a-entity>
+             
 			</a-entity>
+			
 
 			<a-plane static-body position="0 0 0" rotation="-90 0 0" width="100" height="100" depth="1"></a-plane>
 
