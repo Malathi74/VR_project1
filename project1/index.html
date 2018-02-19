@@ -30,9 +30,7 @@
 				 <a-asset-item id="desk" src="assets/Desk/model.dae"></a-asset-item>
 				 <a-asset-item id="small_table" src="assets/small_table/scene.gltf"></a-asset-item>
 			</a-assets>
-			<!--
-			<a-entity collada-model="#sofa" rotation="0 0 0" position="0 0 0" ></a-entity>
-			-->
+
 			<!--bed room-->
 			<a-entity scale="1 1 1" id="bed room">
 				<!--dynamic events-->
@@ -44,6 +42,8 @@
 					var bed_isOpened = false;
 					var bed_isClosed = true;
 
+					var bed_light_on = true;
+					var lamp_light_on = true;
 				function setBedDoorPosition(){
 					var my_door = document.querySelector('#bedroom_door');
 					if(bed_isClosed){
@@ -59,6 +59,36 @@
 						bed_isClosed = true;
 					}
 				}
+
+				function setBedLight(){
+					var light_switch = document.querySelector('#bed_light_switch');
+					var light        = document.querySelector('#bed_light_source');
+					if(bed_light_on){
+						light.setAttribute('intensity', "1");
+						light_switch.setAttribute('color', "#FF0000");
+						bed_light_on = false;
+					}
+					else{
+						light.setAttribute('intensity', "5");
+						light_switch.setAttribute('color', "#00ff40");
+						bed_light_on = true;
+					}
+				}
+				function setLampLight(){
+					var light_switch = document.querySelector('#lamp_post_wrap');
+					var light        = document.querySelector('#lamp_light_source');
+					if(lamp_light_on){
+						light.setAttribute('intensity', "1");
+						light_switch.setAttribute('color', "#FF0000");
+						lamp_light_on = false;
+					}
+					else{
+						light.setAttribute('intensity', "5");
+						light_switch.setAttribute('color', "#00ff40");
+						lamp_light_on = true;
+					}
+				}
+
 				</script>
 				<!-- bed room box-->
 				<a-entity scale="1 1 1" id="bed room box" static-body>
@@ -76,27 +106,40 @@
 					</a-box>
 				</a-entity>
 				<!--light-->
-				<a-entity position="0 2.203 0" light="type: point; intensity: 3; distance: 3" id="ceiling_light" ></a-entity>
-				<a-entity position="-1.21 0.839 0.303" light="type: point; distance: 1" id="lamp_light" color="#ff972f" groundColor="#ff8000"></a-entity>
+				<a-entity position="0 2.203 0" id="bed_light_entity" >
+					<a-light
+					type= "point" intensity="3" distance="3" id="bed_light_source">
+					</a-light>
+				</a-entity>
+				<a-entity position="-1.21 0.839 0.303" id="lamp_light_entity" color="#ff972f" groundColor="#ff8000">
+					<a-light
+					type= "point" distance= "1" intensity="5" id="lamp_light_source">
+					</a-light>
+				</a-entity>
 				<!--models-->
 				<a-gltf-model src="#bed" position="-0.711 0 1.022" rotation="0 90.01166961505233 0" scale="0.367 0.338 0.244" gltf-model="#bed" id="bed"></a-gltf-model>
+				<a-entity id="lamp_post_entity">
 				<a-gltf-model src="#lamp_post" position="-1.25 0.398 0.291" rotation="0 90.01166961505233 0" scale="0.005 0.005 0.005" gltf-model="#lamp_post" id="lamp_post"></a-gltf-model>
+				<a-box id="lamp_post_wrap" class="intersectable" onclick="setLampLight()" position="-1.292 0.772 0.28" scale="0.4 0.4 0.4" visible="false" material="">
+				</a-box>
+				</a-entity>
 				<a-gltf-model src="#ceiling_light" position="0 2.49 0" rotation="0 90.01166961505233 0" scale="0.005 0.005 0.005" gltf-model="#ceiling_light" id="ceiling_light"></a-gltf-model>
 				<a-gltf-model src="#dresser" position="-1.47 0.058 0.078" rotation="0 0 0" scale="0.01 0.009 0.008" gltf-model="#dresser" id="dresser"></a-gltf-model>
 				<a-gltf-model src="#bookshelf" position="-1.35 0.053 -1" rotation="0 90 0" scale="0.008 0.006 0.005" gltf-model="#bookshelf" id="bookshelf"></a-gltf-model>
 				<a-entity collada-model="#desk" position="-0.779 0 -0.546" id="desk" scale="0.75 0.75 0.75"></a-entity>
+				<a-box id="bed_light_switch" scale="0.12 0.025 0.06" color="#00ff40" position="1.394 0.867 -0.018" class="intersectable" onclick="setBedLight()" rotation="0 0 90"></a-box>
 				<!--texts-->
+				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Light;width:2" id="label1" position="-1.179 1.035 -0.701" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
+				<a-entity text="color:#ffffff;height:2;side:double;value:Light Switch;width:2" id="label2" position="1.377 1.039 1.164" rotation="0 270 0" scale="1.5 1.5 1.5"></a-entity>
 			</a-entity>
 
 			<!--living room-->
 			<a-entity id="living room">
 				<!--Texts-->
-				<a-entity text="side:double;width:2;height:2;color:#ffffff;value:Interactable Door" id="label1" position="6.03 2.533 -1.305" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
-				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Door;width:2" id="label2" position="1.498 1.715 -1.889" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
-				<a-entity text="color:#ffffff;height:2;side:double;value:Lights and Fan Switches;width:2" id="label3" position="5.703 1.274 -1.738" scale="1.5 1.5 1.5"></a-entity>
-				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Cabinets;width:2" id="label4" position="2.086 1.815 1.683" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
-				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Light;width:2" id="label5" position="-1.179 1.035 -0.701" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
-				<a-entity text="color:#ffffff;height:2;side:double;value:Light Switch;width:2" id="label6" position="1.377 1.039 1.164" rotation="0 270 0" scale="1.5 1.5 1.5"></a-entity>
+				<a-entity text="side:double;width:2;height:2;color:#ffffff;value:Interactable Door" id="label3" position="6.03 2.533 -1.305" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
+				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Door;width:2" id="label4" position="1.498 1.715 -1.889" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
+				<a-entity text="color:#ffffff;height:2;side:double;value:Lights and Fan Switches;width:2" id="label5" position="5.703 1.274 -1.738" scale="1.5 1.5 1.5"></a-entity>
+				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Cabinets;width:2" id="label6" position="2.086 1.815 1.683" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
 				<!--dynamic events-->
 				<script>
 					var front_door_opened_position = new Object({x: 1.446, y: .806, z: -.84});
@@ -109,6 +152,7 @@
 					var fan_on = false;
 					var table_light_on = true;
 					var ceiling_light_on = true;
+					var kitchen_light_on = true;
 
 				function setFrontDoorPosition(){
 					var my_door = document.querySelector('#front_door');
@@ -170,6 +214,21 @@
 					}
 				}
 
+				function setKitchenLight(){
+					var light_switch = document.querySelector('#kitchen_light_switch');
+					var light        = document.querySelector('#kitchen_light_source');
+					if(kitchen_light_on){
+						light.setAttribute('intensity', ".3");
+						light_switch.setAttribute('color', "#FF0000");
+						kitchen_light_on = false;
+					}
+					else{
+						light.setAttribute('intensity', "3");
+						light_switch.setAttribute('color', "#00ff40");
+						kitchen_light_on = true;
+					}
+				}
+
 				</script>
 				<!--living room box-->
 				<a-entity scale="1.5 1.5 1.5" id="living room box" position="3.748 0 .740" rotation="0 180 0" static-body>
@@ -192,7 +251,7 @@
 					<a-entity position=".521 0.359 -.73" rotation="0 90 0" scale="1.523 .613 1.8" geometry="width:0.1" material="color:#950b0b" static-body></a-entity>
 				</a-entity>
 				<!--models-->
-				<a-entity id="ceiling_fan_entity" position="2.835 3.161 .239">
+				<a-entity id="ceiling_fan_entity" position="3.482 3.161 -.34">
 					<a-entity
 					collada-model="#ceiling_fan" rotation="0 0 0" position="-.6 0 .6">
 					</a-entity>
@@ -203,7 +262,7 @@
                			repeat="indefinite"></a-animation>
 				</a-entity>
 				<a-entity id="switches" position="4.989 1.098 -1.73" rotation="0 90 90" scale="0.1 0.1 0.1">
-					<a-box id="kitchen_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 0.534"></a-box>
+					<a-box id="kitchen_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 0.534" class="intersectable" onclick="setKitchenLight()"></a-box>
 					<a-box id="table_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 -0.53" class="intersectable" onclick="setTableLight()"></a-box>
 					<a-box id="ceiling_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 1.083" class="intersectable" onclick="setCeilingLight()"></a-box>
 					<a-box id="ceiling_fan_switch" scale="1 0.2 0.5" color="#FF0000" class="intersectable" onclick="setFan()"></a-box>
@@ -241,7 +300,11 @@
 						type= "point" intensity="5" distance="5" id="ceiling_light_source">
 					</a-light>
 				</a-entity>
-				<a-entity position="2.391 2.164 3.298" light="type: point; intensity: 3; distance: 3" id="kitchen_light_entity" ></a-entity>
+				<a-entity position="2.391 2.164 3.298" id="kitchen_light_entity" >
+					<a-light
+					type= "point" intensity="3" distance="3" id="kitchen_light_source">
+					</a-light>
+				</a-entity>
 				<a-entity position="4.797 2.164 3.298" id="table_light_entity" >
 					<a-light
 						type= "point" intensity= "3" distance= "3" id="table_light_source">
@@ -251,19 +314,23 @@
 
 			</a-entity>
 			
-			<!--ambient light, camera, sky-->
+			<!--outside objects-->
+			<!--sky-->
 			<a-entity geometry="primitive:sphere;radius:30" material="side:back;color:#620000;emissive:#2c2c2c" id="sky"></a-entity>
+			<!--ambient light-->
 			<a-entity light="color:#6d6d6d;groundColor:#292929;type:ambient" id="ambient_light"></a-entity>
-
-			<a-entity position="9.138 1 -0.59" rotation="0 90 0" id="mycamera" camera="fov: 50" universal-controls>
-				<
+			<!--camera-->
+			<a-entity position="14.81 1 -0.59" rotation="0 90 0" id="mycamera" camera="fov: 50" universal-controls>
+				
   				 <a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
                  radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75">
                  </a-entity>
              	
 			</a-entity>
-			
+			<!--ground-->
 			<a-plane static-body position="0 0 0" rotation="-90 0 0" width="100" height="100" depth="1"></a-plane>
+			<!--texts-->
+			<a-entity text="color:#ffffff;height:2;side:double;value:Labeled Objects Are Clickable;width:2" id="label7" position="10.31 1.127 -.94" rotation="0 90 0" scale="2 2 2"></a-entity>
 
 			
 
