@@ -35,4 +35,14 @@ Take the dining area light for example;
 ```
 ![Image of table light](https://sksdow.github.io/VR_project1/project1/report_screenshots/dining_table_light.jpg)
 
+### Interactable Objects
 
+All interactable objects in this projects are clickable, which mean the object changes its state if is clicked on. This is implemented using a mix of the aframe library and a little bit of javascript. Firstly, the camera entity must wrap arround a raycaster entity, which is then defined as a ".intersectable". 
+```html
+  <a-entity position="14.81 1 -0.59" rotation="0 90 0" id="mycamera" camera="fov: 50" universal-controls>
+    <a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
+      radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75">
+    </a-entity>
+	</a-entity>
+```
+Secondly, the clickable object element "class" attribute must be defined as "intersectable". 
