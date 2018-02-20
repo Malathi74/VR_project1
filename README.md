@@ -69,3 +69,31 @@ function setCeilingLight(){
 	}
 }
 ```
+This is the effect of
+```javascript
+light.setAttribute('intensity', "1");
+light_switch.setAttribute('color', "#FF0000");
+```
+
+This is the effect of
+```javascript
+light.setAttribute('intensity', "5");
+light_switch.setAttribute('color', "#00ff40");
+```
+
+#### Other interactable objects
+ceiling fan, rotates:
+
+kitchen light, turns on and off:
+
+lamp light, turns on and off:
+
+bedroom light, turns on and off:
+
+
+## Models and Links
+
+
+
+
+
