@@ -23,7 +23,7 @@ Tien Dang
 ## Key Features
 
 ### Area Specific Lighting
-Each light in the scene is a point light. "point" is a "type" attribute of the element "a-light", a point light radiates in all (6) directions within a specify "radius" attribute. Each light only covers a specific area in the scene, which gives the user a more realistic feeling.
+Each light in the scene is a point light. "point" is a "type" attribute of the html element "a-light", a point light radiates in all (6) directions within a specify "radius" attribute. Each light only covers a specific area in the scene, which gives the user a more realistic feeling.
 
 Take the dining area light for example;
 ```html
@@ -37,7 +37,7 @@ Take the dining area light for example;
 
 ### Interactable Objects
 
-All interactable objects in this projects are clickable, which mean the object changes its state if is clicked on. This is implemented using a mix of the aframe library and a little bit of javascript. Firstly, the camera entity must wrap arround a raycaster entity, which is then defined as a ".intersectable". 
+All interactable objects in this projects are clickable, which mean the object changes its state if is clicked on. This is implemented using a mix of the aframe library and a little bit of javascript. Firstly, the camera entity must wrap arround a raycaster entity html element, which is then defined as a ".intersectable". 
 ```html
   <a-entity position="14.81 1 -0.59" rotation="0 90 0" id="mycamera" camera="fov: 50" universal-controls>
     <a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
@@ -45,4 +45,27 @@ All interactable objects in this projects are clickable, which mean the object c
     </a-entity>
 	</a-entity>
 ```
-Secondly, the clickable object element "class" attribute must be defined as "intersectable". 
+Secondly, the clickable object html element "class" attribute must be defined as "intersectable", and its "onclick" attribute must be set to a javascript function.
+```html
+<a-box id="ceiling_light_switch" scale="1.3 0.2 0.8" color="#00ff40" position="0 0 2.042" class="intersectable"
+onclick="setCeilingLight()">
+</a-box>
+```
+Thirdly, the javascript function will dynamically changes an appearance, physical attribute, or start animation of the html elements that is specified in the function. In the following example, the html elements of the ids; "ceiling_light_switch", "ceiling_light_source" are being modified.
+```javascript
+var ceiling_light_on = true;
+function setCeilingLight(){
+	var light_switch = document.querySelector('#ceiling_light_switch');
+	var light        = document.querySelector('#ceiling_light_source');
+	if(ceiling_light_on){
+		light.setAttribute('intensity', "1");
+		light_switch.setAttribute('color', "#FF0000");
+		ceiling_light_on = false;
+	}
+	else{
+		light.setAttribute('intensity', "5");
+		light_switch.setAttribute('color', "#00ff40");
+		ceiling_light_on = true;
+	}
+}
+```
