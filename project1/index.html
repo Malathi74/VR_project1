@@ -139,7 +139,6 @@
 				<a-entity text="side:double;width:2;height:2;color:#ffffff;value:Interactable Door" id="label3" position="6.03 2.533 -1.305" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
 				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Door;width:2" id="label4" position="1.498 1.715 -1.889" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
 				<a-entity text="color:#ffffff;height:2;side:double;value:Lights and Fan Switches;width:2" id="label5" position="5.703 1.274 -1.738" scale="1.5 1.5 1.5"></a-entity>
-				<a-entity text="color:#ffffff;height:2;side:double;value:Interactable Cabinets;width:2" id="label6" position="2.086 1.815 1.683" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
 				<!--dynamic events-->
 				<script>
 					var front_door_opened_position = new Object({x: 1.446, y: .806, z: -.84});
@@ -262,12 +261,11 @@
                			repeat="indefinite"></a-animation>
 				</a-entity>
 				<a-entity id="switches" position="4.989 1.098 -1.73" rotation="0 90 90" scale="0.1 0.1 0.1">
-					<a-box id="kitchen_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 0.534" class="intersectable" onclick="setKitchenLight()"></a-box>
-					<a-box id="table_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 -0.53" class="intersectable" onclick="setTableLight()"></a-box>
-					<a-box id="ceiling_light_switch" scale="1 0.2 0.5" color="#00ff40" position="0 0 1.083" class="intersectable" onclick="setCeilingLight()"></a-box>
-					<a-box id="ceiling_fan_switch" scale="1 0.2 0.5" color="#FF0000" class="intersectable" onclick="setFan()"></a-box>
+					<a-box id="kitchen_light_switch" scale="1.3 0.2 0.8" color="#00ff40" position="0 0 0.772" class="intersectable" onclick="setKitchenLight()"></a-box>
+					<a-box id="table_light_switch" scale="1.3 0.2 0.8" color="#00ff40" position="0 0 -1.756" class="intersectable" onclick="setTableLight()"></a-box>
+					<a-box id="ceiling_light_switch" scale="1.3 0.2 0.8" color="#00ff40" position="0 0 2.042" class="intersectable" onclick="setCeilingLight()"></a-box>
+					<a-box id="ceiling_fan_switch" scale="1.3 0.2 0.8" color="#FF0000" class="intersectable" onclick="setFan()" position="0 0 -0.503"></a-box>
 				</a-entity>
-
 				<a-entity collada-model="assets/sofa/model.dae" rotation="0 180 0" scale="1 0.75 0.5" position="3.872 0.089 1.046" id="sofa"></a-entity>
 				<a-gltf-model src="#kitchen_light" position="2.397 2.161 3.48" rotation="0 90.01166961505233 90" scale="0.005 0.003 0.005" gltf-model="#ceiling_light" id="kitchen_light"></a-gltf-model>
 				<a-gltf-model src="#kitchen_light" position="4.797 2.161 3.48" rotation="0 90.01166961505233 90" scale="0.005 0.003 0.005" gltf-model="#ceiling_light" id="table_light"></a-gltf-model>
@@ -310,8 +308,6 @@
 						type= "point" intensity= "3" distance= "3" id="table_light_source">
 					</a-light>
 				</a-entity>
-
-
 			</a-entity>
 			
 			<!--outside objects-->
@@ -332,10 +328,6 @@
 			<!--texts-->
 			<a-entity text="color:#ffffff;height:2;side:double;value:Labeled Objects Are Clickable;width:2" id="label7" position="10.31 1.127 -.94" rotation="0 90 0" scale="2 2 2"></a-entity>
 
-			
-
-		
-		
 	</a-scene>
 	</body>
 	</html>
