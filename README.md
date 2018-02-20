@@ -25,4 +25,12 @@ Tien Dang
 ### Area Specific Lighting
 Each light in the scene is a point light. "point" is a "type" attribute of the element "a-light", a point light radiates in all (6) directions within a specify "radius" attribute. Each light only covers a specific area in the scene, which gives the user a more realistic feeling.
 
-For example:
+Take the dining area light for example
+'''
+<a-entity position="4.797 2.164 3.298" id="table_light_entity" >
+		<a-light
+				type= "point" intensity= "3" distance= "3" id="table_light_source">
+		</a-light>
+</a-entity>
+'''
+
