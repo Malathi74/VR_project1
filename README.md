@@ -76,6 +76,7 @@ light_switch.setAttribute('color', "#FF0000");
 ```
 ![Image of after_ceiling light](https://sksdow.github.io/VR_project1/project1/report_screenshots/after_ceiling_light_source.jpg)
 ![Image of after_ceiling light_switch](https://sksdow.github.io/VR_project1/project1/report_screenshots/after_ceiling_light_switch.jpg)
+
 This is the effect of
 ```javascript
 light.setAttribute('intensity', "5");
@@ -86,17 +87,27 @@ light_switch.setAttribute('color', "#00ff40");
 
 #### Other interactable objects
 ceiling fan, rotates by switch:
+
 ![Image of fan](https://sksdow.github.io/VR_project1/project1/report_screenshots/ceiling_fan.jpg)
 
 kitchen light, bedroom light, and dining table light, turns on and off by switches:
+
 ![Image of_ceiling light](https://sksdow.github.io/VR_project1/project1/report_screenshots/Ceiling_light.jpg)
 
 lamp light, turns on and off by clicking on object:
+
 ![Image of_lamp](https://sksdow.github.io/VR_project1/project1/report_screenshots/Lamp.jpg)
 
 
-## Models and Links
 
+
+## Models and Links
+#### Helpful sites
+https://aframe.io/docs/0.7.0/introduction/
+https://aframe.io/aframe-school/#/
+https://aframe.io/
+#### Models and links
+https://sksdow.github.io/VR_project1/project1/Project_1_models.pptx
 
 
 
